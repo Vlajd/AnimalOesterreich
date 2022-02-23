@@ -10,9 +10,12 @@ config_version=4
 
 [application]
 
-config/name="GGProd"
+config/name="AnimalOesterreich"
 run/main_scene="res://scenes/main.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://textures/splashscreen.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://textures/splashscreen.png"
+config/windows_native_icon="res://textures/icon.ico"
 
 [physics]
 

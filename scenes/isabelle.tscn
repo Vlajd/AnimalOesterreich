@@ -7,7 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="Armature" parent="." index="0"]
-transform = Transform( 61.069, -3.79594, -1.58698, -0.819515, 11.9131, -60.0313, 4.03188, 59.9168, 11.8354, -0.0207138, -0.0770233, 0.321826 )
+transform = Transform( 61.0705, -3.78271, -1.56209, -0.738269, 12.7964, -59.8503, 4.02541, 59.7352, 12.7222, -0.0248242, -0.0820466, 0.33464 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Armature|Armature|Armature|mixamocom|Layer0|Armature|Armature|"

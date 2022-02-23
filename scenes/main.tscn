@@ -86,7 +86,7 @@ autoplay = true
 
 [node name="BadEndgameTimer" type="Timer" parent="."]
 process_priority = 100
-wait_time = 4096.0
+wait_time = 15.0
 one_shot = true
 
 [connection signal="timeout" from="TextboxInitializer" to="." method="InitTextbox"]
