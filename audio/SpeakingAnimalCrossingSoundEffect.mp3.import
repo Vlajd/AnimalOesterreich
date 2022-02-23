@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SpeakingAnimalCrossingSoundEffect.mp3-8d3521ec078548e9d6db08f468b6c9d7.mp3str"
+
+[deps]
+
+source_file="res://audio/SpeakingAnimalCrossingSoundEffect.mp3"
+dest_files=[ "res://.import/SpeakingAnimalCrossingSoundEffect.mp3-8d3521ec078548e9d6db08f468b6c9d7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

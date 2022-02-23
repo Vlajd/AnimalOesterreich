@@ -7,6 +7,7 @@ public class textbox : TextureRect
     private Label _label;
     private File _dialog = new File();
     private AudioStreamPlayer2D _buttonSound;
+    private AudioStreamPlayer2D _speakSound;
     private Timer _endGameTimer;
     private TextureButton _nextButton;
     private GridContainer _questioning;
@@ -17,6 +18,7 @@ public class textbox : TextureRect
         _label = GetNode<Label>("Label");
         _dialog.Open("res://dialog/0.tres", File.ModeFlags.Read);
         _buttonSound = GetNode<AudioStreamPlayer2D>("ButtonClickSound");
+        _speakSound = GetNode<AudioStreamPlayer2D>("ButtonSpeakSound");
         _endGameTimer = GetNode<Timer>("EndGameTimer");
         _nextButton = GetNode<TextureButton>("Button");
         _questioning = GetNode<GridContainer>("Questioning");
@@ -42,6 +44,7 @@ public class textbox : TextureRect
         if (_label.Text == "Einen schoenen Tag noch!" && !_endgame) StartEndGame();
 
         _buttonSound.Play();
+        PlaySpeakSound();
     }
 
     private void ShowQuestioning()
@@ -64,5 +67,10 @@ public class textbox : TextureRect
     {
         EmitSignal("StartBadEndgame");
         _endgame = true;
+    }
+
+    public void PlaySpeakSound()
+    {
+        _speakSound.Play();
     }
 }

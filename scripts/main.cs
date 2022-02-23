@@ -28,6 +28,7 @@ public class main : Spatial
     public void InitTextbox()
     {
         _textbox.Visible = true;
+        _textbox.PlaySpeakSound();
     }
 
     public void StartBadEndgame()
