@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://models/isabelle/isabelle.glb" type="PackedScene" id=1]
+[ext_resource path="res://scripts/isabelle.cs" type="Script" id=2]
+
+[node name="isabelle" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Armature" parent="." index="0"]
+transform = Transform( 61.069, -3.79594, -1.58698, -0.819515, 11.9131, -60.0313, 4.03188, 59.9168, 11.8354, -0.0207138, -0.0770233, 0.321826 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Armature|Armature|Armature|mixamocom|Layer0|Armature|Armature|"

@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="GGProd"
-run/main_scene="res://scenes/TextOverlay.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/icon="res://icon.png"
 
 [physics]

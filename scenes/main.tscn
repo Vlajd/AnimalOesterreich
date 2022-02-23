@@ -1,11 +1,94 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://materials/floor.tres" type="Material" id=1]
+[ext_resource path="res://scenes/isabelle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/main.cs" type="Script" id=3]
+[ext_resource path="res://scenes/TextOverlay.tscn" type="PackedScene" id=4]
+[ext_resource path="res://audio/MainThemeSong.mp3" type="AudioStream" id=5]
+[ext_resource path="res://materials/floor2.tres" type="Material" id=6]
 
-[node name="Spatial" type="Spatial"]
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_energy = 0.15
+glow_enabled = true
+glow_intensity = 0.91
+glow_strength = 0.09
+glow_bloom = 0.2
+glow_blend_mode = 1
+adjustment_enabled = true
+adjustment_brightness = 1.15
+adjustment_contrast = 1.07
 
-[node name="CSGBox" type="CSGBox" parent="."]
+[sub_resource type="Environment" id=2]
+background_mode = 1
+adjustment_enabled = true
+adjustment_brightness = 8.0
+adjustment_contrast = 8.0
+adjustment_saturation = 8.0
+
+[node name="main" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="Floor" type="CSGBox" parent="."]
 width = 15.0
 height = 1.0
 depth = 15.0
 material = ExtResource( 1 )
+
+[node name="Floor2" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+width = 100.0
+height = 1.0
+depth = 100.0
+material = ExtResource( 6 )
+
+[node name="Isabelle" parent="." instance=ExtResource( 2 )]
+
+[node name="MainCamera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.994121, 0.108277, 0, -0.108277, 0.994121, 0, 4.2, 18 )
+environment = SubResource( 1 )
+fov = 60.0
+
+[node name="scndCamera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.994121, 0.108277, 0, -0.108277, 0.994121, 0.169, 6.212, 2.943 )
+environment = SubResource( 2 )
+fov = 89.9
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.0387, 0 )
+light_color = Color( 0.756863, 0.976471, 1, 1 )
+light_energy = 3.495
+light_indirect_energy = 16.0
+shadow_enabled = true
+shadow_bias = 2.535
+spot_range = 73.652
+spot_angle = 20.92
+
+[node name="SpotLight2" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.764607, 0.644497, 0, -0.644497, 0.764607, 0, 15.0387, 16.8391 )
+light_color = Color( 0.756863, 0.976471, 1, 1 )
+light_energy = 3.495
+light_indirect_energy = 16.0
+shadow_enabled = true
+shadow_bias = 2.535
+spot_range = 40.0
+spot_angle = 32.48
+
+[node name="TextboxInitializer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="TextBox" parent="." instance=ExtResource( 4 )]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="BadEndgameTimer" type="Timer" parent="."]
+process_priority = 100
+wait_time = 4096.0
+one_shot = true
+
+[connection signal="timeout" from="TextboxInitializer" to="." method="InitTextbox"]
+[connection signal="StartBadEndgame" from="TextBox" to="." method="StartBadEndgame"]
+[connection signal="timeout" from="BadEndgameTimer" to="." method="EndGame"]
