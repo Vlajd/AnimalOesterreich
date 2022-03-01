@@ -79,6 +79,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="TextBox" parent="." instance=ExtResource( 4 )]
+TextDirectory = "res://dialog/borisAlone.tres"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )

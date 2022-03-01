@@ -12,11 +12,19 @@ public class textbox : TextureRect
     private TextureButton _nextButton;
     private GridContainer _questioning;
     private bool _endgame;
+    [Export] private string TextDirectory = "res://dialog/";
 
     public override void _Ready()
     {
         _label = GetNode<Label>("Label");
-        _dialog.Open("res://dialog/0.tres", File.ModeFlags.Read);
+        if(!_dialog.FileExists(TextDirectory))
+        {
+            GD.PrintErr("Could Not Open Text File");
+        }
+        else
+        {
+            _dialog.Open(TextDirectory, File.ModeFlags.Read);
+        }
         _buttonSound = GetNode<AudioStreamPlayer2D>("ButtonClickSound");
         _speakSound = GetNode<AudioStreamPlayer2D>("ButtonSpeakSound");
         _endGameTimer = GetNode<Timer>("EndGameTimer");
