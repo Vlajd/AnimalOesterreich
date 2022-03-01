@@ -9,6 +9,7 @@ public class textbox : TextureRect
     private AudioStreamPlayer2D _buttonSound;
     private AudioStreamPlayer2D _speakSound;
     private Timer _endGameTimer;
+    private Timer _preEndGame;
     private TextureButton _nextButton;
     private GridContainer _questioning;
     private bool _endgame;
@@ -32,6 +33,7 @@ public class textbox : TextureRect
         _questioning = GetNode<GridContainer>("Questioning");
         _questioning.Visible = false;
         _endgame = false;
+        _preEndGame = GetNode<Timer>("PreEndGame");
     }
 
     public override void _Process(float delta)
@@ -75,6 +77,14 @@ public class textbox : TextureRect
     {
         EmitSignal("StartBadEndgame");
         _endgame = true;
+    }
+
+    public void _PreStartBadEndgame()
+    {
+        _preEndGame.Start();
+        _questioning.QueueFree();
+        _label.QueueFree();
+        this.Visible = false;
     }
 
     public void PlaySpeakSound()

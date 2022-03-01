@@ -119,9 +119,14 @@ size_flags_vertical = 3
 theme = ExtResource( 7 )
 text = " Nein "
 
+[node name="PreEndGame" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="mouse_entered" from="Button" to="Button" method="_onButtonMouseEntered"]
 [connection signal="mouse_exited" from="Button" to="Button" method="_onButtonMouseExited"]
 [connection signal="pressed" from="Button" to="." method="NextText"]
 [connection signal="timeout" from="EndGameTimer" to="." method="EndGame"]
 [connection signal="pressed" from="Questioning/Ja" to="." method="NextText"]
-[connection signal="pressed" from="Questioning/Nein" to="." method="_StartBadEndgame"]
+[connection signal="pressed" from="Questioning/Nein" to="." method="_PreStartBadEndgame"]
+[connection signal="timeout" from="PreEndGame" to="." method="_StartBadEndgame"]

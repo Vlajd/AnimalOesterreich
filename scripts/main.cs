@@ -37,7 +37,7 @@ public class main : Spatial
         _textbox.QueueFree();
         _mainCamera.Current = false;
         _scndCamera.Current = true;
-        _music.VolumeDb = 36.0f;
+        _music.VolumeDb = 48.0f;
     }
 
     public void EndGame()
